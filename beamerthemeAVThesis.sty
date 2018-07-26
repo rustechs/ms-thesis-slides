@@ -1,5 +1,6 @@
 % the various libraries we will be using
 \usepackage{tikz}
+\usepackage[skins]{tcolorbox}
 \usetikzlibrary{calc}
 \usepackage[none]{hyphenat}
 \usepackage{fontspec}
@@ -16,7 +17,7 @@
 \definecolor{AVThesisRed}{RGB}{166,25,46}
 \definecolor{AVThesisBlack}{RGB}{53,53,49}
 \definecolor{AVThesisBlue}{RGB}{46,134,171}
-\definecolor{AVThesisWhite}{RGB}{252,247,248}
+\definecolor{AVThesisWhite}{RGB}{255,255,255}
 \definecolor{AVThesisGrey}{RGB}{112,128,144}
 \definecolor{AVThesisYellow}{RGB}{230,194,41}
 
@@ -24,15 +25,15 @@
 % Source Serif Pro: https://github.com/adobe-fonts/source-serif-pro
 % Source Sans Pro: https://github.com/adobe-fonts/source-sans-pro
 % Source Code Pro: https://github.com/adobe-fonts/source-code-pro
-\setmainfont{Source Serif Pro}
-\setsansfont{Source Sans Pro}
-\setmonofont{Source Code Pro}
+%\setmainfont{Source Serif Pro}
+%\setsansfont{Source Sans Pro}
+%\setmonofont{Source Code Pro}
 
 % To use with pdflatex,
 % comment the fontspec package at the top
-%\usepackage{sourceserifpro}
-%\usepackage{sourcesanspro}
-%\usepackage{sourcecodepro}
+\usepackage{sourceserifpro}
+\usepackage{sourcesanspro}
+\usepackage{sourcecodepro}
 
 % set colours
 \setbeamercolor{itemize item}{fg=AVThesisBlue}
@@ -41,8 +42,9 @@
 \setbeamercolor{section in toc}{fg=AVThesisBlack}
 
 % set fonts
-\setbeamerfont{itemize/enumerate body}{size=\large}
-\setbeamerfont{itemize/enumerate subbody}{size=\normalsize}
+\setbeamerfont{itemize/enumerate body}{size=\normalsize}
+\setbeamerfont{itemize/
+	 subbody}{size=\normalsize}
 \setbeamerfont{itemize/enumerate subsubbody}{size=\small}
 
 \ifbeamer@pixelitem
@@ -141,16 +143,17 @@
 		\ifnum\thepage=1\relax
 			% the title page
 			% draw the fills
-			\fill[color=AVThesisRed] (0, 4cm) rectangle(\slidewidth,\slideheight);
+			\path[fill overzoom image=assets/CMU-Tartan-Digital.eps] (0,4cm) rectangle(\slidewidth,\slideheight);
+%			\fill[color=AVThesisRed] (0, 4cm) rectangle(\slidewidth,\slideheight);
 
 			% draw the actual text
-			\node[anchor=south,text width=\slidewidth-1cm,inner xsep=0.5cm] at (0.5\slidewidth,4cm) {\color{AVThesisWhite}\Huge\textbf{\inserttitle}};
-			\node[anchor=north east,text width=\slidewidth-1cm,align=right] at (\slidewidth-0.4cm,4cm) {\color{AVThesisBlack}\tiny\insertsubtitle};
-			\node[above] at(0.5\slidewidth,2.3cm) {\color{AVThesisBlack}\tiny by};
-			\node at (0.5\slidewidth,2cm) {\color{AVThesisBlack}\LARGE\insertauthor};
+			\node[anchor=south,text width=\slidewidth-1cm,inner xsep=0.5cm] at (0.5\slidewidth,4cm) {\color{AVThesisWhite}\fontsize{32}{40}\textbf{\inserttitle}};
+			\node[anchor=south west,text width=\slidewidth-1cm,align=left] at (0.4cm,0.95cm) {\color{AVThesisBlack}\normalsize\insertsubtitle};
+			\node[anchor=north west,align=left] at (0.4cm,3.8cm) {\color{AVThesisBlack}\Large\textbf{\insertauthor}};
 
-			% add the date in the corner
-			\node[anchor=south east] at(\slidewidth,0cm) {\color{AVThesisGrey}\tiny\insertdate};
+			\node[anchor=south west] at (0.4cm,0.4cm) {\color{AVThesisGrey}\normalsize\insertdate};
+			
+			\node[anchor=north west] (cmu-logo) at (\slidewidth-5cm,4cm) {\includegraphics[width=6.5cm]{assets/cmu-seal-red.png}};
 		\else
 			% NOT the title page
 			% title bar
@@ -210,7 +213,8 @@
 		\useasboundingbox (0,0) rectangle(\slidewidth,\slideheight);
 		%\fill[color=AVThesisWhite] (0,0) rectangle(\the\paperwidth,\the\paperheight);
 		\fill[color=AVThesisWhite] (-1cm, 2cm) rectangle (\slidewidth, \slideheight+0.1cm);
-		\fill[color=AVThesisRed] (-1cm, 0.5\slideheight-1cm) rectangle(\slidewidth, 0.5\slideheight+1cm);
-		\node[text width=\the\paperwidth-1cm,align=center] at (0.4\slidewidth, 0.5\slideheight) {\color{AVThesisWhite}\Huge\textbf{\insertsection}};
+		\path[fill overzoom image=assets/CMU-Tartan-Digital.eps] (-1cm, 0.5\slideheight-1cm) rectangle(\slidewidth,0.5\slideheight+1cm);
+%		\fill[color=AVThesisRed] (-1cm, 0.5\slideheight-1cm) rectangle(\slidewidth, 0.5\slideheight+1cm);
+		\node[text width=\the\paperwidth,align=center] at (0.5\slidewidth-1cm, 0.5\slideheight) {\color{AVThesisWhite}\Huge\textbf{\insertsection}};
 	\end{tikzpicture}
 }

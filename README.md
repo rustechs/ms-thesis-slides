@@ -1,4 +1,1 @@
-Beamer-Theme-Execushares
-========================
-
-A minimalist and modern Beamer theme. Blog post regarding how this was written can be found here: http://hamaluik.com/posts/better-beamer-themes/
+My thesis talk, based on the brilliant LaTeX Beamer theme from here: http://hamaluik.com/posts/better-beamer-themes/
