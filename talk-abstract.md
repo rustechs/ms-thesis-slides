@@ -1,5 +1,1 @@
-In this talk I will discuss an assortment of concepts and projects which have occupied my time at the RI.
-
-
- fundamental concepts that I have found to be crucial to the study of robotics. 
-
+I arrived at the Robotics Institute two years ago looking for a good project, something tangible and preferably related to legged locomotion. Instead, I met Matt Mason and started to think about the big picture, ask the big questions. What is manipulation? What is robotics? What makes robotics particularly hard? To answer these questions, I set out to find the underlying structure to robotics -- some common framework to connect all the scattered pieces. In this talk I will present my findings thusfar, focusing on physical systems modeling, thermal management of actuators, and tactile sensing.

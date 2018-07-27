@@ -1,7 +1,8 @@
-%!TEX program = xelatex
+%!TEX program = lualatex
 \documentclass[aspectratio=169]{beamer}
 
 \usepackage{blindtext}
+\usepackage{multimedia}
 
 \usetheme{AVThesis}
 
@@ -92,6 +93,14 @@
 		\begin{frame}
 			\frametitle{Lorem 3}
 			\blindtext
+		\end{frame}
+	
+	\section{Touching Robots}
+		\begin{frame}
+			\frametitle{Terminator 2 Got It Right}
+			\begin{center}
+			\movie[height = 0.6\textwidth, width = 0.8\textwidth,showcontrols]{}{media/terminator2-pain.mp4}
+			\end{center}
 		\end{frame}
 
 	\section{Conclusions}
