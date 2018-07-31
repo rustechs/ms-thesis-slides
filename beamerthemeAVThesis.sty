@@ -2,6 +2,8 @@
 \usepackage{tikz}
 \usepackage[skins]{tcolorbox}
 \usetikzlibrary{calc}
+\usetikzlibrary{positioning}
+\usetikzlibrary{arrows}
 \usepackage[none]{hyphenat}
 \usepackage{fontspec}
 \defaultfontfeatures{Ligatures=TeX}
@@ -10,6 +12,10 @@
 \beamer@pixelitemtrue
 \DeclareOptionBeamer{nopixelitem}{\beamer@pixelitemfalse}
 \ProcessOptionsBeamer
+
+\newcommand{\highlight}[2]{%
+	\tikz[baseline] {\node[anchor=base,inner sep=0pt,%
+		outer sep=3pt,fill=black!10] (#1) {#2};}}
 
 % define colours
 % taken from pickton on Adobe Kuler:
@@ -34,6 +40,17 @@
 \usepackage{sourceserifpro}
 \usepackage{sourcesanspro}
 \usepackage{sourcecodepro}
+
+% Disable frame continuation (I do it manually in some spots)
+\setbeamertemplate{frametitle continuation}{}
+
+% Move footnotes up above progress bar
+\setbeamertemplate{footnote}{
+	\raisebox{8mm}{\insertfootnotemark
+	\parbox[t][1cm]{0.8\textwidth}{
+		\insertfootnotetext%
+	}}%
+}
 
 % set colours
 \setbeamercolor{itemize item}{fg=AVThesisBlue}
@@ -160,7 +177,7 @@
 
 			% swap the comment on these to add section titles to slide titles
 			%\node[anchor=north,text width=11.8cm,inner xsep=0.5cm,inner ysep=0.25cm] at (6.4cm,9.6cm) {\color{AVThesisWhite}\Large\textbf{\insertsectionhead: \insertframetitle}};
-			\node[anchor=north,text width=\slidewidth-1cm,inner xsep=0.5cm,inner ysep=0.25cm] at (0.5\slidewidth,\slideheight) {\color{AVThesisWhite}\huge\textbf{\insertframetitle}};
+			\node[anchor=north,text width=\slidewidth-1cm,inner xsep=0.5cm,inner ysep=0.25cm] at (0.5\slidewidth,\slideheight) {\color{AVThesisWhite}\LARGE\textbf{\insertframetitle}};
 			
 			% if we're showing a progress bar, show it
 			% (I disable the progress bar and slide numbers for the "Appendix" slides)

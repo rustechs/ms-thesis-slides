@@ -1,15 +1,18 @@
 %!TEX program = lualatex
 \documentclass[aspectratio=169]{beamer}
+% add 'handout' to beamer options for printout
 
-\usepackage{blindtext}
 \usepackage{multimedia}
+\usepackage[backend=biber,style=ieee]{biblatex}
 
 \usetheme{AVThesis}
 
-\title{The Art of Robotics:\\\vspace{0.2em}\huge{Toward A Holistic Approach}}
+\title{The Art of Robotics:\\\vspace{0.2em}\huge{Toward a Holistic Approach}}
 \subtitle{Master of Science in Robotics\\Thesis Defense}
 \author{Alexander Volkov Jr.}
 \date{July 31, 2018}
+
+\bibliography{refs/thesis-slides.bib}
 
 % Change frame margins
 \addtobeamertemplate{frametitle}{\vspace*{1cm}}{\vspace*{0cm}}
@@ -27,10 +30,10 @@
 		\begin{enumerate}
 			\setlength{\itemsep}{4mm}
 			\item Background
-				\textcolor{AVThesisGrey}{\footnotesize\hspace{1em} How I ended up here.}
+				\textcolor{AVThesisGrey}{\footnotesize\hspace{1em} The BFD; how I ended up here}
 				
-			\item Other Things
-				\textcolor{AVThesisGrey}{\footnotesize\hspace{1em} Warm up the crowd with a quick review of some other things I've done.}
+%			\item Other Things
+%				\textcolor{AVThesisGrey}{\footnotesize\hspace{1em} Warm up the crowd with a quick review of some other things I've done.}
 			
 			\item The Big Picture
 				\textcolor{AVThesisGrey}{\footnotesize\hspace{1em} Cover the central themes of this talk.}
@@ -38,8 +41,8 @@
 			\item A Unifying Framework
 				\textcolor{AVThesisGrey}{\footnotesize\hspace{1em} An old framework, revived.}
 			
-			\item Brushless PMSM Motors
-				\textcolor{AVThesisGrey}{\footnotesize\hspace{1em} Operating limits, thermal management, liquid cooling.}
+%			\item Brushless PMSM Motors
+%				\textcolor{AVThesisGrey}{\footnotesize\hspace{1em} Operating limits, thermal management, liquid cooling.}
 	
 			\item Touching Robots
 				\textcolor{AVThesisGrey}{\footnotesize\hspace{1em} Tactile sensing, contact modeling, whiskers, robot pain.}
@@ -47,7 +50,7 @@
 			\item Conclusions
 				\textcolor{AVThesisGrey}{\footnotesize\hspace{1em} Review key points and propose some future work.}
 			
-			\item Questions
+			\item Acknowledgments \& Questions
 				\textcolor{AVThesisGrey}{\footnotesize\hspace{1em} \emph{``Please clap...''}}
 		\end{enumerate}
 	\end{frame}
@@ -57,77 +60,326 @@
 	\setcounter{showSlideNumbers}{1}
 	
 	\section{Background}
-		\begin{frame}
-			\frametitle{How I Ended Up Here}
 		
-		\end{frame}
-
-	\section{Other Things}
 		\begin{frame}
-			\frametitle{Teaching with CMU's Gelfand Outreach Center}
-			\begin{tikzpicture}[overlay, remember picture]
-				\node[anchor=center] (gelfand-logo) at (0.88\textwidth, 0) {\includegraphics[width=5cm]{media/gelfand-logo.jpg}};
-			\end{tikzpicture}
+			\frametitle{The BFD}
 			\begin{itemize}
-				\item Introduction to Robotics with the Finch Platform
-					\begin{itemize}
-						\item Each session is 5 days, 3 hrs/day
-						\item 4\textsuperscript{th} and 5\textsuperscript{th} graders
-						\item 1 session Summer 2017 + 2 sessions Summer 2018
-					\end{itemize}
-					\vspace{1em}
-				
-			\end{itemize}
-		\end{frame}
-	
-		\begin{frame}
-			\frametitle{Teaching with CMU's Gelfand Outreach Center}
-			\begin{tikzpicture}[overlay, remember picture]
-				\node[anchor=center] (gelfand-logo) at (0.88\textwidth, 0) {\includegraphics[width=5cm]{media/gelfand-logo.jpg}};
-			\end{tikzpicture}
-			\begin{itemize}
-				\item Saturday Series LEGO WeDo Robotics
+				\item \textbf{End Game:} Develop a Unified Framework for Understanding Robotics \pause
 				\begin{itemize}
-					\item 3 hour course
-					\item 2\textsuperscript{nd} and 3\textsuperscript{rd} graders
-					\item 1 session Spring 2018
+					\item \textbf{Thesis Purpose:} Reflect on and organize \emph{my} understanding of robotics \pause
+						\begin{itemize}
+							\item \textbf{Talk Purpose:} Provide an overview of my thesis dissertation for the committee
+						\end{itemize}
 				\end{itemize}
 			\end{itemize}
 		\end{frame}
 		
 		\begin{frame}
-			\frametitle{Robotics Institute Meme Facebook Page}
+			\frametitle{Talk Title Etymology I}
 			\begin{tikzpicture}[overlay, remember picture]
-				\node[anchor=center] (ri-meme-screenshot) at (current page.center) {\includegraphics[width=\textwidth]{media/ri-memes.jpg}};
+				\node[anchor=east] (taoe) at ($(current page.east)+(-3mm,-1mm)$) 	{\includegraphics[width=5.5cm]{media/the-art-of-electronics.png}};
+			\end{tikzpicture}
+			\begin{itemize}
+				\item ``The Art of Electronics'', by \emph{Horowitz \& Hill}\pause
+				\begin{itemize}
+					\item Literally the electrical engineering bible
+					\item Incredibly thorough
+					\item Perfect balance of practicality and rigor 
+				\end{itemize}
+			\end{itemize}
+		\end{frame}
+	
+		\begin{frame}
+			\frametitle{Talk Title Etymology II}
+			\begin{tikzpicture}[overlay, remember picture]
+				\node[anchor=east] (taoe) at ($(current page.east)+(-10mm,-1mm)$) 	{\includegraphics[width=4cm]{media/mason-manip-book.jpg}};
+			\end{tikzpicture}
+			\begin{itemize}
+				\item ``Mechanics of Robotic Manipulation'', by \emph{Mason}\footnotemark~\autocite{mason2001mechanics} \pause
+					\begin{itemize}
+						\item ``Manipulation is an art\dots'' (p.1)
+					\end{itemize}
+			\end{itemize}
+			\footnotetext{Matt, I'll take my referral payments by mail.}
+		\end{frame}
+
+%		\begin{frame}
+%			\frametitle{Talk (Sub)Title Etymology III}
+%			\begin{tikzpicture}[overlay, remember picture]
+%			\fontsize{18}{15}
+%			\node[anchor=center] (subtitle) at (current page.center) {``Toward a Holistic Approach''};
+%			\end{tikzpicture}
+%		\end{frame}
+%		
+%		\begin{frame}
+%			\addtocounter{framenumber}{-1}
+%			\frametitle{Talk (Sub)Title Etymology III}
+%			\begin{tikzpicture}[overlay, remember picture]
+%				\fontsize{18}{15}
+%				\node[anchor=center] (subtitle) at (current page.center) {``\highlight{toward}{Toward} a Holistic Approach''};
+%				\fontsize{10}{12}
+%				\node[anchor=south west, fill=red!20,rounded corners, text width=3cm, outer sep=3pt, inner sep=3pt] (toward-note) at ($(current page.south west) + (10mm,10mm)$) {When you concede falling short of a goal in academia.};
+%				\draw [->, line width=0.3mm] (toward-note) -- (toward);
+%			\end{tikzpicture}
+%		\end{frame}
+	
+		\begin{frame}
+%			\addtocounter{framenumber}{-1}
+			\frametitle{Talk (Sub)Title Etymology III}
+			\begin{tikzpicture}[overlay, remember picture]
+				\fontsize{18}{15}
+				\only<1>{\node[anchor=center] (subtitle) at (current page.center) {``Toward a Holistic Approach''};}
+				\only<2>{\node[anchor=center] (subtitle) at (current page.center) {``\highlight{toward}{Toward} a Holistic Approach''};
+				\fontsize{10}{12}
+				\node[anchor=south west, fill=red!20,rounded corners, text width=5cm, outer sep=3pt, inner sep=3pt] (toward-note) at ($(current page.south west) + (10mm,10mm)$) {When you concede falling short of a goal in academia. Example: Mason's Annual Review ``Toward Robotic Manipulation'' \autocite{Mason2018}};
+				\draw [->, line width=0.3mm] (toward-note) -- (toward);}
+				\onslide<3->{\node[anchor=center] (subtitle) at (current page.center) {``\highlight{toward}{Toward} a \highlight{holistic}{Holistic} Approach''};
+				\fontsize{10}{12}
+				\node[anchor=south west, fill=red!20,rounded corners, text width=5cm, outer sep=3pt, inner sep=3pt] (toward-note) at ($(current page.south west) + (10mm,10mm)$) {When you concede falling short of a goal in academia. Example: Mason's Annual Review ``Toward Robotic Manipulation'' \autocite{Mason2018}};
+				\draw [->, line width=0.3mm] (toward-note) -- (toward);
+				\node[anchor=south east, fill=red!20,rounded corners, text width=7cm, outer sep=3pt, inner sep=3pt] (holistic-note) at ($(current page.south east) + (-10mm,10mm)$) {From the mechatronics/systems engineering community. Chhabra and Emami provide an excellent summary in \autocite{Chhabra2011}.};
+				\draw [->, line width=0.3mm] (holistic-note) -- (holistic);}
+			\end{tikzpicture}
+		\end{frame}
+
+	
+		\begin{frame}
+			\frametitle{How I Ended Up Here (Some Context) I}
+			\vspace{-0.5em}
+			\begin{itemize}
+				\item \textbf{Hobby robotics} $\Rightarrow$ self-taught basic electronics, programming, CAD\pause
+					\begin{itemize}
+						\item ``Keep it cheap''
+						\item ``Keep it open-source''
+						\item ``Keep it useful (or, at least, artistic)''
+					\end{itemize}\pause
+				\vspace{0.5em}
+				\item \textbf{Cornell Undergrad} $\Rightarrow$ ECE major, ME/CS minors\pause
+					\begin{itemize}
+						\item \textbf{ECE:}
+							\begin{itemize}
+								\item ``Everything is an impedance (or an admittance)''
+								\item ``What's the system bandwidth?''
+							\end{itemize}
+						\item \textbf{ME:}\pause
+							\begin{itemize}
+								\item ``At the end of the day, everything is mechanical''
+								\item ``Everything is a model, and every model is wrong''
+							\end{itemize}\pause
+						\item \textbf{CS:} 
+						\begin{itemize}
+							\item ``90\% of solving a problem is finding the right representation''
+							\item ``Everything breaks at the interfaces''
+						\end{itemize}
+					\end{itemize}
+			\end{itemize}
+		\end{frame}
+	
+		\begin{frame}
+			\frametitle{How I Ended Up Here (Some Context) II}
+			\begin{tikzpicture}[overlay, remember picture]
+				\node[anchor=center] (ri-logo) at (current page.center) {\includegraphics[width=30mm]{assets/ri-logo.eps}};
+				\node[minimum width=2cm, below=5mm of ri-logo] {``Time to become a robotics master...''};
 			\end{tikzpicture}
 		\end{frame}
 	
 		\begin{frame}
-			\frametitle{Robotics Institute Meme Facebook Page}
-			\begin{itemize}
-				\item Some statistics:
-					\begin{itemize}
-						\item The RI's first and only meme page
-						\item Formed in March 2018
-						\item 170 members
-						\item 30 memes, 23 original contributions!
-					\end{itemize}
-			\end{itemize}
-	\end{frame}
+			\frametitle{How I Ended Up Here (Some Context) III}
+			\begin{tikzpicture}[overlay, remember picture]
+				\node[anchor=south east] (ri-logo) at ($(current page.south east)+(-5mm,10mm)$) {\includegraphics[width=16mm]{assets/ri-logo.eps}};
+				\fontsize{12}{10}
+				\node[anchor=south west] (me) at ($(current page.south west)+(5mm,10mm)$) {\includegraphics[width=2cm]{media/me.jpg}};
+				\node[minimum width=2cm, right=3mm of me] {``Legged locomotion is cool...''};
+			\end{tikzpicture}
+		\end{frame}
+
+		\begin{frame}
+			\frametitle{How I Ended Up Here (Some Context) IV}
+			\begin{tikzpicture}[overlay, remember picture]
+				\node[anchor=south east] (ri-logo) at ($(current page.south east)+(-5mm,10mm)$) {\includegraphics[width=16mm]{assets/ri-logo.eps}};
+				\fontsize{12}{10}
+				\node[anchor=south west] (me) at ($(current page.south west)+(5mm,10mm)$) {\includegraphics[width=2cm]{media/me.jpg}};
+				\node[minimum width=2cm, right=3mm of me] {\color{gray}``Legged locomotion is cool...''};
+				\node[anchor=north east] (hartmut) at ($(current page.north east)+(-5mm,-15mm)$) {\includegraphics[width=2cm]{media/hartmut.jpg}};
+				\node[anchor=north east] (travers) at ($(current page.north east)+(-28mm,-15mm)$) {\includegraphics[width=2cm]{media/travers.jpg}};
+				\node[anchor=north east] (koushil) at ($(current page.north east)+(-51mm,-15mm)$) {\includegraphics[width=2cm]{media/koushil.jpg}};
+				\node[anchor=east, minimum width=2cm, left=3mm of koushil] {``Great! Here's absolutely no funding.''};
+			\end{tikzpicture}
+		\end{frame}
+	
+		\begin{frame}
+			\frametitle{How I Ended Up Here (Some Context) V}
+			\begin{tikzpicture}[overlay, remember picture]
+				\node[anchor=south east] (ri-logo) at ($(current page.south east)+(-5mm,10mm)$) {\includegraphics[width=16mm]{assets/ri-logo.eps}};
+				\fontsize{12}{10}
+				\node[anchor=south west] (me) at ($(current page.south west)+(5mm,10mm)$) {\includegraphics[width=2cm]{media/me.jpg}};
+				\node[minimum width=2cm, right=3mm of me] {``Umm...''};
+				\node[anchor=north east] (hartmut) at ($(current page.north east)+(-5mm,-15mm)$) {\includegraphics[width=2cm]{media/hartmut.jpg}};
+				\node[anchor=north east] (travers) at ($(current page.north east)+(-28mm,-15mm)$) {\includegraphics[width=2cm]{media/travers.jpg}};
+				\node[anchor=north east] (koushil) at ($(current page.north east)+(-51mm,-15mm)$) {\includegraphics[width=2cm]{media/koushil.jpg}};
+				\node[anchor=east, minimum width=2cm, left=3mm of koushil] {\color{gray}``Great! Here's absolutely no funding.''};
+			\end{tikzpicture}
+		\end{frame}
+	
+		\begin{frame}
+			\frametitle{How I Ended Up Here (Some Context) VI}
+			\begin{tikzpicture}[overlay, remember picture]
+				\node[anchor=south east] (ri-logo) at ($(current page.south east)+(-5mm,10mm)$) {\includegraphics[width=16mm]{assets/ri-logo.eps}};
+				\fontsize{12}{10}
+				\node[anchor=south west] (me) at ($(current page.south west)+(5mm,10mm)$) {\includegraphics[width=2cm]{media/me.jpg}};
+				\node[minimum width=2cm, right=3mm of me] {\color{gray}``Umm...''};
+				\node[anchor=north east] (ross) at ($(current page.north east)+(-5mm,-15mm)$) {\includegraphics[width=2cm]{media/ross.jpg}};
+				\node[anchor=east, minimum width=2cm, left=3mm of ross] {``Wait! Go talk to Matt Mason!''};
+			\end{tikzpicture}
+		\end{frame}
+
+		\begin{frame}
+			\frametitle{How I Ended Up Here (Some Context) VII}
+			\begin{tikzpicture}[overlay, remember picture]
+				\node[anchor=south east] (ri-logo) at ($(current page.south east)+(-5mm,10mm)$) {\includegraphics[width=16mm]{assets/ri-logo.eps}};
+				\fontsize{12}{10}
+				\node[anchor=south west] (me) at ($(current page.south west)+(5mm,10mm)$) {\includegraphics[width=2cm]{media/me.jpg}};
+				\node[minimum width=2cm, right=3mm of me] {``(skeptical) Okay...''};
+				\node[anchor=north east] (ross) at ($(current page.north east)+(-5mm,-15mm)$) {\includegraphics[width=2cm]{media/ross.jpg}};
+				\node[anchor=east, minimum width=2cm, left=3mm of ross] {\color{gray}``Wait! Go talk to Matt Mason!''};
+			\end{tikzpicture}
+		\end{frame}
+	
+		\begin{frame}
+			\frametitle{How I Ended Up Here (Some Context) VIII}
+			\begin{tikzpicture}[overlay, remember picture]
+				\node[anchor=south east] (ri-logo) at ($(current page.south east)+(-5mm,10mm)$) {\includegraphics[width=16mm]{assets/ri-logo.eps}};
+				\fontsize{12}{15}
+				\node[anchor=south west] (me) at ($(current page.south west)+(5mm,10mm)$) {\includegraphics[width=2cm]{media/me.jpg}};
+				\node[minimum width=2cm, right=3mm of me] {\color{gray}``(skeptical) Okay...''};
+				\node[anchor=north east] (matt) at ($(current page.north east)+(-5mm,-15mm)$) {\includegraphics[width=2cm]{media/mason.jpg}};
+				\node[anchor=east, text width=5cm, left=3mm of matt, align=right] {``Manipulation is awesome! \\And I have money! \\And I don't micromanage!''};
+			\end{tikzpicture}
+		\end{frame}
+	
+		\begin{frame}
+			\frametitle{How I Ended Up Here (Some Context) IX}
+			\begin{tikzpicture}[overlay, remember picture]
+				\node[anchor=south east] (ri-logo) at ($(current page.south east)+(-5mm,10mm)$) {\includegraphics[width=16mm]{assets/ri-logo.eps}};
+				\fontsize{12}{15}
+				\node[anchor=south west] (me) at ($(current page.south west)+(5mm,10mm)$) {\includegraphics[width=2cm]{media/me.jpg}};
+				\node[minimum width=2cm, right=3mm of me] {``(excited) Works for me!''};
+				\node[anchor=north east] (matt) at ($(current page.north east)+(-5mm,-15mm)$) {\includegraphics[width=2cm]{media/mason.jpg}};
+				\node[anchor=east, text width=5cm, left=3mm of matt, align=right] {\color{gray}``Manipulation is awesome! \\And I have money! \\And I don't micromanage!''};
+			\end{tikzpicture}
+		\end{frame}
+	
+		\begin{frame}
+			\frametitle{How I Ended Up Here (Some Context) X}
+			\begin{tikzpicture}[overlay, remember picture]
+				\node[anchor=south east] (ri-logo) at ($(current page.south east)+(-5mm,10mm)$) {\includegraphics[width=16mm]{assets/ri-logo.eps}};
+				\fontsize{12}{15}
+				\node[anchor=south west] (me) at ($(current page.south west)+(5mm,10mm)$) {\includegraphics[width=2cm]{media/me.jpg}};
+				\node[minimum width=2cm, right=3mm of me] {\color{gray}``(excited) Works for me!''};
+				\node[anchor=north east] (matt) at ($(current page.north east)+(-5mm,-15mm)$) {\includegraphics[width=2cm]{media/mason.jpg}};
+				\node[anchor=east, minimum width=2cm, left=3mm of matt, align=right] {``Fantastic, go forth and prosper!''};
+			\end{tikzpicture}
+		\end{frame}
+
+		\begin{frame}
+			\frametitle{How I Ended Up Here (Some Context) XI}
+			\begin{tikzpicture}[overlay, remember picture]
+				\node[anchor=south east] (ri-logo) at ($(current page.south east)+(-5mm,10mm)$) {\includegraphics[width=16mm]{assets/ri-logo.eps}};
+				\fontsize{12}{15}
+				\node[anchor=south west] (me) at ($(current page.south west)+(5mm,10mm)$) {\includegraphics[width=2cm]{media/me.jpg}};
+				\node[text width=8cm, right=3mm of me, align=left] {``I've been meaning to read Hogan's famous \emph{Impedance Control}~\autocite{hogan1985impedance} paper, I guess I'll start there...''};
+			\end{tikzpicture}
+		\end{frame}
+	
+		\begin{frame}
+			\frametitle{How I Ended Up Here (Some Context) XII}
+			\begin{tikzpicture}[overlay, remember picture]
+				\fontsize{18}{15}
+				\node[anchor=center, minimum width=2cm] at (current page.center) {\dots~Two Years Later \dots};
+			\end{tikzpicture}
+		\end{frame}
+
+		\begin{frame}
+		\frametitle{Me, circa July 2018}
+			\begin{tikzpicture}[overlay, remember picture]
+				\node[anchor=center] (paranoid) at (current page.center) {\includegraphics[width=8cm]{media/charlie-paranoid}};
+				\node[anchor=center, below=0mm of paranoid] {``So it's all about causality\dots~and feedback!''};
+			\end{tikzpicture}
+		\end{frame}
 	
 	\section{The Big Picture}
 		\begin{frame}
-			\frametitle{Breadth First}
-			\begin{enumerate}
-				\item 
-			\end{enumerate}
+			\frametitle{Back to Basics}
+			\begin{itemize}[<+->]
+				\item Want a concise \emph{theory of robotics}\dots
+				\item Interested in the \emph{physics} common to robotics problems
+				\item Not worried about SLAM, POMDPs, etc\dots~there are bigger fish to fry (we're skimming over the basics!)
+					\begin{itemize}
+						\item i.e. Moravec's paradox \autocite{moravec1988mind}
+					\end{itemize}
+				\item Inherently a \emph{breadth-first} approach, since we're looking for a unifying framework
+			\end{itemize}
 		\end{frame}
 	
-			\begin{frame}
-				\frametitle{Tangential Projects}
-				Kruskal count + quadruped gaits
-			\end{frame}
-
+		\begin{frame}
+			\frametitle{Problem 1: What is a Robot?}
+			\begin{itemize}
+				\item I know it's a cliché to bring this up\dots \pause but I must! \pause
+				\begin{itemize}
+					\item Does the ambiguity really matter? \pause
+					\item Maybe not, but some unifying \emph{theme} would be useful!
+				\end{itemize}
+			\end{itemize}
+		\end{frame}
+	
+		\begin{frame}
+			
+		\end{frame}
+	
+		\begin{frame}
+			\frametitle{Problem 2: Locomotion and Manipulation, Segregated}
+			\begin{itemize}
+				\item Locomotion and manipulation are studied separately in robotics\pause
+					\begin{itemize}
+						\item \dots~and biomechanics, for that matter
+						\item Seems quite natural at first, we all talk about the two as separate specializations in robotics
+					\end{itemize}\pause
+				\item Eventually, the notion of \emph{``duality''} comes up\dots
+				\begin{itemize}\pause
+					\item Locomotion and manipulation sometimes overlap
+						\begin{itemize}
+							\item Pai et al.'s \emph{Platonic Beasts} \autocite{pai1994platonic}
+							\item Mason et al.'s \emph{Mobipulator} \autocite{MasonMobileManipulator1999} \autocite{MasonDesktopMobileManipulators2000}
+							\item Also, literally everywhere in biology
+						\end{itemize}
+					\item Perhaps it just comes down to a change of reference?
+						\begin{itemize}
+							\item What pushes off of what?
+							\item Locomotion is ``self-manipulation'', e.g. Aaron Johnson's PhD thesis \autocite{johnson2014self} and related works \autocite{johnson2012standing}\autocite{johnson2016hybrid}
+						\end{itemize}
+				\end{itemize}
+			\end{itemize}
+		\end{frame}
+	
+		\begin{frame}
+			\frametitle{Problem 2: Locomotion and Manipulation, United}
+			\begin{itemize}
+				\item Taking the ``self-manipulation'' perspective
+			\end{itemize}
+		\end{frame}
+	
+		\begin{frame}
+			\frametitle{Embodiment \& Hogan's Physical-Equivalence Principle}
+			\begin{itemize}[<+->]
+				\item Embodiment
+					\begin{itemize}
+						\item 
+						\item Presently resides in the cognitive science community (as in ``embodied \emph{cognition}'')
+					\end{itemize}
+				\item 
+			\end{itemize}
+		\end{frame}
+	
 	\section{A Unifying Framework}
 		\begin{frame}
 			\frametitle{The Port-Hamiltonian Framework}
@@ -150,19 +402,24 @@
 			\frametitle{Hamiltonian Dynamics}
 			
 		\end{frame}
+	
+		\begin{frame}
+			\frametitle{Dissipative Elements}
+		\end{frame}
 
 		\begin{frame}
 			\frametitle{Putting it All Together}
 			
 		\end{frame}
 	
-	\section{Brushless PMSM Motors}
-		
-		\begin{frame}
-			\frametitle{???}
-		\end{frame}
-	
 	\section{Touching Robots}
+	
+		\begin{frame}
+			\frametitle{A Note on Stiffness and Collisions}
+			\begin{itemize}
+				\item \textbf{\color{red}STOP COLLIDING STIFF OBJECTS AND EXPECTING RELIABLE RESULTS}
+			\end{itemize}
+		\end{frame}
 	
 		\begin{frame}
 			\frametitle{The Most Important Sensory Modality}
@@ -186,16 +443,93 @@
 				\item Woo, Beamer!
 			\end{itemize}
 		\end{frame}
-	
-	\section{Questions?}
 		
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\setcounter{showProgressBar}{0}
+	\setcounter{showSlideNumbers}{0}
 	
 	\appendix
 	\backupbegin
-	  \begin{frame}
-	    \frametitle{Backup slide 1}
-	    \blindtext
-	  \end{frame}
+	
+	\section{Acknowledgments}
+	
+	\begin{frame}
+	\frametitle{Cheers}
+		Committee\\Lab\\The other profs\\Jean\\Cameron\\Cats\\Parents for debt free education
+	\end{frame}
+
+	\section{Questions?}
+	
+	\nocite{*}
+	\begin{frame}[allowframebreaks]
+		\frametitle{Bibliography}
+		\printbibliography[heading=none]
+	\end{frame}
+
+		\section{Other Things}
+	\begin{frame}
+	\frametitle{Teaching with CMU's Gelfand Outreach Center}
+	\begin{tikzpicture}[overlay, remember picture]
+	\node[anchor=south east] (gelfand-logo) at ($(current page.south east) + (-8mm, 8mm)$) {\includegraphics[width=4cm]{media/gelfand-logo.jpg}};
+	\end{tikzpicture}
+	\vspace{9em}
+	\begin{itemize}
+		\item Introduction to Robotics with the Finch Platform
+		\begin{itemize}
+			\item Each session is 5 days, 3 hrs/day
+			\item 4\textsuperscript{th} and 5\textsuperscript{th} graders
+			\item 1 session Summer 2017 + 2 sessions Summer 2018
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Teaching with CMU's Gelfand Outreach Center}
+\begin{tikzpicture}[overlay, remember picture]
+\node[anchor=south east] (gelfand-logo) at ($(current page.south east) + (-8mm, 8mm)$) {\includegraphics[width=4cm]{media/gelfand-logo.jpg}};
+\end{tikzpicture}
+\vspace{9em}
+\begin{itemize}
+\item Saturday Series LEGO WeDo Robotics
+\begin{itemize}
+	\item 3 hour course
+	\item 2\textsuperscript{nd} and 3\textsuperscript{rd} graders
+	\item 1 session Spring 2018
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Robotics Institute Meme Facebook Page}
+\begin{tikzpicture}[overlay, remember picture]
+\node[anchor=center] (ri-meme-screenshot) at (current page.center) {\includegraphics[width=\textwidth]{media/ri-memes.jpg}};
+\end{tikzpicture}
+\end{frame}
+
+\begin{frame}
+\frametitle{Robotics Institute Meme Facebook Page}
+\vspace{9em}
+\begin{itemize}
+\item Some statistics:
+\begin{itemize}
+\item The RI's first and only meme page
+\item Formed in March 2018
+\item 170 members
+\item 30 memes, 23 original contributions!
+\end{itemize}
+\end{itemize}
+\begin{tikzpicture}[overlay, remember picture]
+\node[anchor=south east] (ri-meme-3) at ($(current page.south east) + (2mm,5mm)$) {\includegraphics[width=7.5cm]{media/ri-meme-manifold-optimization.jpg}};
+\end{tikzpicture}
+\begin{tikzpicture}[overlay, remember picture]
+\node[anchor=north east] (ri-meme-1) at ($(current page.north east) + (-45mm,-12mm)$) {\includegraphics[width=3.5cm]{media/ri-meme-thesis-anxiety.jpg}};
+\end{tikzpicture}
+\begin{tikzpicture}[overlay, remember picture]
+\node[anchor=north west] (ri-meme-2) at ($(current page.north west) + (10mm,-12mm)$) {\includegraphics[width=5cm]{media/ri-meme-ros-sleep.jpg}};
+\end{tikzpicture}
+\end{frame}
+
+
 	\backupend
 
 \end{document}
