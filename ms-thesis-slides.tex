@@ -176,6 +176,7 @@
 		\end{frame}
 	
 		\begin{frame}
+			\addtocounter{framenumber}{-1}
 			\frametitle{How I Ended Up Here (Some Context) II}
 			\begin{tikzpicture}[overlay, remember picture]
 				\node[anchor=center] (ri-logo) at (current page.center) {\includegraphics[width=30mm]{assets/ri-logo.eps}};
@@ -184,6 +185,7 @@
 		\end{frame}
 	
 		\begin{frame}
+			\addtocounter{framenumber}{-1}
 			\frametitle{How I Ended Up Here (Some Context) III}
 			\begin{tikzpicture}[overlay, remember picture]
 				\node[anchor=south east] (ri-logo) at ($(current page.south east)+(-5mm,10mm)$) {\includegraphics[width=16mm]{assets/ri-logo.eps}};
@@ -194,6 +196,7 @@
 		\end{frame}
 
 		\begin{frame}
+			\addtocounter{framenumber}{-1}
 			\frametitle{How I Ended Up Here (Some Context) IV}
 			\begin{tikzpicture}[overlay, remember picture]
 				\node[anchor=south east] (ri-logo) at ($(current page.south east)+(-5mm,10mm)$) {\includegraphics[width=16mm]{assets/ri-logo.eps}};
@@ -208,6 +211,7 @@
 		\end{frame}
 	
 		\begin{frame}
+			\addtocounter{framenumber}{-1}
 			\frametitle{How I Ended Up Here (Some Context) V}
 			\begin{tikzpicture}[overlay, remember picture]
 				\node[anchor=south east] (ri-logo) at ($(current page.south east)+(-5mm,10mm)$) {\includegraphics[width=16mm]{assets/ri-logo.eps}};
@@ -222,6 +226,7 @@
 		\end{frame}
 	
 		\begin{frame}
+			\addtocounter{framenumber}{-1}
 			\frametitle{How I Ended Up Here (Some Context) VI}
 			\begin{tikzpicture}[overlay, remember picture]
 				\node[anchor=south east] (ri-logo) at ($(current page.south east)+(-5mm,10mm)$) {\includegraphics[width=16mm]{assets/ri-logo.eps}};
@@ -234,6 +239,7 @@
 		\end{frame}
 
 		\begin{frame}
+			\addtocounter{framenumber}{-1}
 			\frametitle{How I Ended Up Here (Some Context) VII}
 			\begin{tikzpicture}[overlay, remember picture]
 				\node[anchor=south east] (ri-logo) at ($(current page.south east)+(-5mm,10mm)$) {\includegraphics[width=16mm]{assets/ri-logo.eps}};
@@ -246,6 +252,7 @@
 		\end{frame}
 	
 		\begin{frame}
+			\addtocounter{framenumber}{-1}
 			\frametitle{How I Ended Up Here (Some Context) VIII}
 			\begin{tikzpicture}[overlay, remember picture]
 				\node[anchor=south east] (ri-logo) at ($(current page.south east)+(-5mm,10mm)$) {\includegraphics[width=16mm]{assets/ri-logo.eps}};
@@ -258,6 +265,7 @@
 		\end{frame}
 	
 		\begin{frame}
+			\addtocounter{framenumber}{-1}
 			\frametitle{How I Ended Up Here (Some Context) IX}
 			\begin{tikzpicture}[overlay, remember picture]
 				\node[anchor=south east] (ri-logo) at ($(current page.south east)+(-5mm,10mm)$) {\includegraphics[width=16mm]{assets/ri-logo.eps}};
@@ -270,6 +278,7 @@
 		\end{frame}
 	
 		\begin{frame}
+			\addtocounter{framenumber}{-1}
 			\frametitle{How I Ended Up Here (Some Context) X}
 			\begin{tikzpicture}[overlay, remember picture]
 				\node[anchor=south east] (ri-logo) at ($(current page.south east)+(-5mm,10mm)$) {\includegraphics[width=16mm]{assets/ri-logo.eps}};
@@ -282,6 +291,7 @@
 		\end{frame}
 
 		\begin{frame}
+			\addtocounter{framenumber}{-1}
 			\frametitle{How I Ended Up Here (Some Context) XI}
 			\begin{tikzpicture}[overlay, remember picture]
 				\node[anchor=south east] (ri-logo) at ($(current page.south east)+(-5mm,10mm)$) {\includegraphics[width=16mm]{assets/ri-logo.eps}};
@@ -292,6 +302,7 @@
 		\end{frame}
 	
 		\begin{frame}
+			\addtocounter{framenumber}{-1}
 			\frametitle{How I Ended Up Here (Some Context) XII}
 			\begin{tikzpicture}[overlay, remember picture]
 				\fontsize{18}{15}
@@ -333,11 +344,28 @@
 		\end{frame}
 	
 		\begin{frame}
-			
+			\frametitle{Problem 2: What is Manipulation?}
+			\begin{itemize}
+				\item To be honest, I had a very shallow understanding of manipulation until I met Matt \pause
+					\begin{itemize}
+						\item I imagined it was just factory robot stuff \pause
+						\item It took some reflection to appreciate the depth of ``manipulation''
+					\end{itemize}
+			\end{itemize}
 		\end{frame}
 	
 		\begin{frame}
-			\frametitle{Problem 2: Locomotion and Manipulation, Segregated}
+			\frametitle{Problem 2: What is Manipulation?}
+			\begin{tikzpicture}[overlay, remember picture]
+				\fontsize{15}{12}
+				\node[anchor=center, text width=0.8\textwidth,align=center] (manip-def) at ($(current page.center)+(0,-3mm)$) {``Manipulation refers to an agent’s control of its environment through selective contact.''};
+				\small
+				\node[anchor=south east, align=right] at ($(current page.south east)+(-1cm,1cm)$) {--- \emph{Matt Mason}, ``Toward Robotic Manipulation'' \autocite{Mason2018}};
+			\end{tikzpicture}
+		\end{frame}
+	
+		\begin{frame}
+			\frametitle{Problem 3: Locomotion and Manipulation, Segregated}
 			\begin{itemize}
 				\item Locomotion and manipulation are studied separately in robotics\pause
 					\begin{itemize}
@@ -354,7 +382,7 @@
 						\end{itemize}
 					\item Perhaps it just comes down to a change of reference?
 						\begin{itemize}
-							\item What pushes off of what?
+							\item Just a matter of ``what pushes off of what?''
 							\item Locomotion is ``self-manipulation'', e.g. Aaron Johnson's PhD thesis \autocite{johnson2014self} and related works \autocite{johnson2012standing}\autocite{johnson2016hybrid}
 						\end{itemize}
 				\end{itemize}
@@ -362,10 +390,30 @@
 		\end{frame}
 	
 		\begin{frame}
-			\frametitle{Problem 2: Locomotion and Manipulation, United}
+			\frametitle{Problem 3: Locomotion and Manipulation, United}
+			\vspace{-6em}
 			\begin{itemize}
-				\item Taking the ``self-manipulation'' perspective
+				\item The ``self-manipulation'' view of locomotion is consistent with our definition of ``manipulation'':
+					\begin{itemize}
+						\item An agent may control its environment through selective contact (i.e. ``manipulation'') by moving about in it (i.e. ``locomotion''). \footnotemark
+					\end{itemize}
 			\end{itemize}
+			\footnotetext{It helps to take on an egocentric point of view to visualize this.}
+			\pause
+			\begin{tikzpicture}[overlay, remember picture]
+				\fontsize{15}{12}
+				\node[anchor=center,text width=0.8\textwidth,align=center] (loco-manip) at ($(current page.center)+(0,-10mm)$) {So locomotion is just a subset of manipulation!};
+			\end{tikzpicture}
+		\end{frame}
+	
+		\begin{frame}
+			\frametitle{Problem 3: Locomotion and Manipulation, United}
+			\begin{itemize}
+				\item Not a terribly practical insight\dots \pause~but thinking back to \emph{Problem 1}\dots
+			\end{itemize}
+			\begin{tikzpicture}[overlay, remember picture]
+				\node[anchor=center,text width=0.8\textwidth,align=center] (loco-manip) at ($(current page.center)+(0,-10mm)$) {So locomotion is just a subset of manipulation!};
+			\end{tikzpicture}
 		\end{frame}
 	
 		\begin{frame}
@@ -382,19 +430,29 @@
 	
 	\section{A Unifying Framework}
 		\begin{frame}
-			\frametitle{The Port-Hamiltonian Framework}
+			\frametitle{Port-Hamiltonian Systems Theory}
 			\begin{itemize}
 				\item Port-based Analysis
+					\begin{itemize}
+						\item Inherits the bond-graph notion of power ports
+						\item Treats systems in terms of power flow between components
+						\item Each bond represents the conjugate pair of an effort and flow
+					\end{itemize}\pause
 				\item Hamiltonian Dynamics
 					\begin{itemize}
-						\item 
+						\item Provides a fully geometric (intrinsic, coordinate free) description of system dynamics
+						\item Equivalent to (and convertible from/to) Lagrangian formulation
+							\begin{itemize}
+								\item Whereas Lagrangian dynamics derives solely from variation principles, the Hamiltonian formulation 
+								\item Riemannian geometry of Lagrangian dynamics replaced with symplectic geometry, in which fundamental invariants are preserved.
+								\item Configuration space of Lagrangian dynamics replaced with state space
+							\end{itemize}
 					\end{itemize}
-				\item
 			\end{itemize}
 		\end{frame}
 	
 		\begin{frame}
-			\frametitle{Bond Graphs}
+			\frametitle{Bond-Graphs}
 			
 		\end{frame}
 
@@ -460,13 +518,14 @@
 
 	\section{Questions?}
 	
+	\section{Bibliography}
 	\nocite{*}
 	\begin{frame}[allowframebreaks]
 		\frametitle{Bibliography}
 		\printbibliography[heading=none]
 	\end{frame}
 
-		\section{Other Things}
+	\section{Other Things}
 	\begin{frame}
 	\frametitle{Teaching with CMU's Gelfand Outreach Center}
 	\begin{tikzpicture}[overlay, remember picture]
