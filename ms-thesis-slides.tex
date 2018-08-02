@@ -1,5 +1,5 @@
 %!TEX program = lualatex
-\documentclass[aspectratio=169]{beamer}
+\documentclass[aspectratio=169,handout]{beamer}
 % add 'handout' to beamer options for printout
 
 \usepackage{multimedia}
@@ -44,9 +44,9 @@
 %			\item Brushless PMSM Motors
 %				\textcolor{AVThesisGrey}{\footnotesize\hspace{1em} Operating limits, thermal management, liquid cooling.}
 	
-			\item Touching Robots
-				\textcolor{AVThesisGrey}{\footnotesize\hspace{1em} Tactile sensing, contact modeling, whiskers, robot pain.}
-			
+%			\item Touching Robots
+%				\textcolor{AVThesisGrey}{\footnotesize\hspace{1em} Tactile sensing, contact modeling, whiskers, robot pain.}
+%			
 			\item Conclusions
 				\textcolor{AVThesisGrey}{\footnotesize\hspace{1em} Review key points and propose some future work.}
 			
@@ -335,7 +335,7 @@
 		\begin{frame}
 			\frametitle{Problem 1: What is a Robot?}
 			\begin{itemize}
-				\item I know it's a cliché to bring this up\dots \pause but I must! \pause
+				\item I know it's a cliché to bring this up\dots \pause~but I must! \pause
 				\begin{itemize}
 					\item Does the ambiguity really matter? \pause
 					\item Maybe not, but some unifying \emph{theme} would be useful!
@@ -412,23 +412,41 @@
 				\item Not a terribly practical insight\dots \pause~but thinking back to \emph{Problem 1}\dots
 			\end{itemize}
 			\begin{tikzpicture}[overlay, remember picture]
-				\node[anchor=center,text width=0.8\textwidth,align=center] (loco-manip) at ($(current page.center)+(0,-10mm)$) {So locomotion is just a subset of manipulation!};
+				\node[anchor=center,text width=0.8\textwidth,align=center] (manip-is-king) at ($(current page.center)+(0,-10mm)$) {\Large \color{red} Manipulation \emph{is} the central theme in robotics!};
 			\end{tikzpicture}
 		\end{frame}
 	
 		\begin{frame}
-			\frametitle{Embodiment \& Hogan's Physical-Equivalence Principle}
+			\frametitle{Embodiment \& Hogan's Physical-Equivalence ``Postulate''}
 			\begin{itemize}[<+->]
 				\item Embodiment
 					\begin{itemize}
-						\item 
+						\item Vaguely, the idea that robots exist in the real world and are inherently tied to their environment
 						\item Presently resides in the cognitive science community (as in ``embodied \emph{cognition}'')
 					\end{itemize}
-				\item 
+				\item \emph{Hogan's} Physical-Equivalent Principle
+					\begin{itemize}
+						\item ``It is impossible tO devise a controller which will cause a physical system to present an apparent behavior 10 its environment which is distinguishable from that of a purely physical system'' \autocite{hogan1985impedance}
+						\item Basic argument for this is ``you can't break thermodynamic laws''
+						\item But more intuitively, the robot is a real thing, you can't make it do not real things
+					\end{itemize}
 			\end{itemize}
 		\end{frame}
 	
 	\section{A Unifying Framework}
+		\begin{frame}
+			\frametitle{Port-Hamiltonian Systems Theory}
+			\begin{itemize}[<+->]
+				\item The symbiosis of:
+					\begin{itemize}[<+->]
+						\item Bond graph theory (\emph{Paynter, Hogan, Breedveld, van Dijk})
+						\item Hamiltonian dynamics on manifolds (i.e. ``geometric mechanics'')
+						\item Poisson / Dirac structures
+					\end{itemize}
+				\item Principal contributors include \emph{Stramigioli, van der Schaft, Maschke}
+			\end{itemize}
+		\end{frame}
+	
 		\begin{frame}
 			\frametitle{Port-Hamiltonian Systems Theory}
 			\begin{itemize}
@@ -437,68 +455,58 @@
 						\item Inherits the bond-graph notion of power ports
 						\item Treats systems in terms of power flow between components
 						\item Each bond represents the conjugate pair of an effort and flow
-					\end{itemize}\pause
+					\end{itemize}
+			\end{itemize}
+		\end{frame}
+	
+		\begin{frame}
+			\frametitle{Port-Hamiltonian Systems Theory}
+			\begin{itemize}
 				\item Hamiltonian Dynamics
 					\begin{itemize}
 						\item Provides a fully geometric (intrinsic, coordinate free) description of system dynamics
-						\item Equivalent to (and convertible from/to) Lagrangian formulation
-							\begin{itemize}
-								\item Whereas Lagrangian dynamics derives solely from variation principles, the Hamiltonian formulation 
-								\item Riemannian geometry of Lagrangian dynamics replaced with symplectic geometry, in which fundamental invariants are preserved.
+						\item Equivalent to (and convertible from/to) Lagrangian formulation, but better!
+							\begin{itemize} 
+								\item Riemannian geometry of Lagrangian dynamics replaced with symplectic geometry, in which fundamental invariants are preserved
 								\item Configuration space of Lagrangian dynamics replaced with state space
+								\item Hamiltonian formulation directly yields a system of first order differential equations
+							\end{itemize}
+						\item Avoiding nonholonomic constraints yields explicit ODE\footnote{May be a stiff explicit ODE! So, soften your intermittent contacts!}
+					\end{itemize}
+			\end{itemize}
+		\end{frame}
+	
+	
+	
+		\begin{frame}
+			\frametitle{Port-Hamiltonian Systems Theory}
+			\begin{itemize}
+				\item System fully defined by: 
+					\begin{itemize}
+						\item Energy function captures all energy storage elements in system
+						\item Resistive structure captures all dissipative elements in system
+						\item Poisson or Dirac interconnection structure defines power flow within system
+							\begin{itemize}
+								\item \emph{Storage port} connects to energy storage
+								\item \emph{Dissipative port} connects to resistive structure
+								\item \emph{Interaction port} connects to environment (\textbf{dynamic system} not known a-priori or directly controlled)
+								\item \emph{Controller port} connects to controller (\textbf{dynamic system} that the designer has control over)
 							\end{itemize}
 					\end{itemize}
 			\end{itemize}
 		\end{frame}
 	
 		\begin{frame}
-			\frametitle{Bond-Graphs}
-			
-		\end{frame}
-
-		\begin{frame}
-			\frametitle{Hamiltonian Dynamics}
-			
+			\frametitle{Working Through an Example}
 		\end{frame}
 	
-		\begin{frame}
-			\frametitle{Dissipative Elements}
-		\end{frame}
-
-		\begin{frame}
-			\frametitle{Putting it All Together}
-			
-		\end{frame}
-	
-	\section{Touching Robots}
-	
-		\begin{frame}
-			\frametitle{A Note on Stiffness and Collisions}
-			\begin{itemize}
-				\item \textbf{\color{red}STOP COLLIDING STIFF OBJECTS AND EXPECTING RELIABLE RESULTS}
-			\end{itemize}
-		\end{frame}
-	
-		\begin{frame}
-			\frametitle{The Most Important Sensory Modality}
-		\end{frame}
-	
-		\begin{frame}
-			\frametitle{Contact Models}
-		\end{frame}
-		
-		\begin{frame}
-			\frametitle{Terminator 2 Got It Right}
-			\begin{center}
-			\movie[height = 0.6\textwidth, width = 0.8\textwidth,showcontrols]{}{media/terminator2-pain.mp4}
-			\end{center}
-		\end{frame}
-
 	\section{Closing Thoughts}
 		\begin{frame}
 			\frametitle{Closing Thoughts}
 			\begin{itemize}
-				\item Woo, Beamer!
+				\item Manipulation is the common theme in robotics
+				\item Embodiment \Leftrightarrow Hogan's Physical Equivalence Principle \autocite{hogan1985impedance}
+				\item Port-Hamiltonian Systems Theory is the framework to unify robotics
 			\end{itemize}
 		\end{frame}
 		
@@ -511,9 +519,80 @@
 	
 	\section{Acknowledgments}
 	
+%		\begin{frame}
+%	\frametitle{Teaching with CMU's Gelfand Outreach Center}
+%	\begin{tikzpicture}[overlay, remember picture]
+%	\node[anchor=south east] (gelfand-logo) at ($(current page.south east) + (-8mm, 8mm)$) {\includegraphics[width=4cm]{media/gelfand-logo.jpg}};
+%	\end{tikzpicture}
+%	\vspace{9em}
+%	\begin{itemize}
+%		\item Introduction to Robotics with the Finch Platform
+%		\begin{itemize}
+%			\item Each session is 5 days, 3 hrs/day
+%			\item 4\textsuperscript{th} and 5\textsuperscript{th} graders
+%			\item 1 session Summer 2017 + 2 sessions Summer 2018
+%		\end{itemize}
+%	\end{itemize}
+%\end{frame}
+%
+%\begin{frame}
+%\frametitle{Teaching with CMU's Gelfand Outreach Center}
+%\begin{tikzpicture}[overlay, remember picture]
+%\node[anchor=south east] (gelfand-logo) at ($(current page.south east) + (-8mm, 8mm)$) {\includegraphics[width=4cm]{media/gelfand-logo.jpg}};
+%\end{tikzpicture}
+%\vspace{9em}
+%\begin{itemize}
+%\item Saturday Series LEGO WeDo Robotics
+%\begin{itemize}
+%	\item 3 hour course
+%	\item 2\textsuperscript{nd} and 3\textsuperscript{rd} graders
+%	\item 1 session Spring 2018
+%\end{itemize}
+%\end{itemize}
+%\end{frame}
+%
+%\begin{frame}
+%\frametitle{Robotics Institute Meme Facebook Page}
+%\begin{tikzpicture}[overlay, remember picture]
+%\node[anchor=center] (ri-meme-screenshot) at (current page.center) {\includegraphics[width=\textwidth]{media/ri-memes.jpg}};
+%\end{tikzpicture}
+%\end{frame}
+%
+%\begin{frame}
+%\frametitle{Robotics Institute Meme Facebook Page}
+%\vspace{9em}
+%\begin{itemize}
+%\item Some statistics:
+%\begin{itemize}
+%\item The RI's first and only meme page
+%\item Formed in March 2018
+%\item 170 members
+%\item 30 memes, 23 original contributions!
+%\end{itemize}
+%\end{itemize}
+%\begin{tikzpicture}[overlay, remember picture]
+%\node[anchor=south east] (ri-meme-3) at ($(current page.south east) + (2mm,5mm)$) {\includegraphics[width=7.5cm]{media/ri-meme-manifold-optimization.jpg}};
+%\end{tikzpicture}
+%\begin{tikzpicture}[overlay, remember picture]
+%\node[anchor=north east] (ri-meme-1) at ($(current page.north east) + (-45mm,-12mm)$) {\includegraphics[width=3.5cm]{media/ri-meme-thesis-anxiety.jpg}};
+%\end{tikzpicture}
+%\begin{tikzpicture}[overlay, remember picture]
+%\node[anchor=north west] (ri-meme-2) at ($(current page.north west) + (10mm,-12mm)$) {\includegraphics[width=5cm]{media/ri-meme-ros-sleep.jpg}};
+%\end{tikzpicture}
+%\end{frame}
+	
 	\begin{frame}
 	\frametitle{Cheers}
-		Committee\\Lab\\The other profs\\Jean\\Cameron\\Cats\\Parents for debt free education
+		\begin{itemize}
+			\item Matt Mason
+			\item Aaron Johnson \& Will Martin
+			\item The MLab
+			\item Ross Knepper, Hod Lipson, Ephrahim Garcia, Boris Kogan, Mike Meller
+			\item Jean Harpley
+			\item Cameron
+			\item Malcolm X, Nina Simone, and George Harrison
+			\item Parents
+		\end{itemize}
 	\end{frame}
 
 	\section{Questions?}
@@ -524,70 +603,6 @@
 		\frametitle{Bibliography}
 		\printbibliography[heading=none]
 	\end{frame}
-
-	\section{Other Things}
-	\begin{frame}
-	\frametitle{Teaching with CMU's Gelfand Outreach Center}
-	\begin{tikzpicture}[overlay, remember picture]
-	\node[anchor=south east] (gelfand-logo) at ($(current page.south east) + (-8mm, 8mm)$) {\includegraphics[width=4cm]{media/gelfand-logo.jpg}};
-	\end{tikzpicture}
-	\vspace{9em}
-	\begin{itemize}
-		\item Introduction to Robotics with the Finch Platform
-		\begin{itemize}
-			\item Each session is 5 days, 3 hrs/day
-			\item 4\textsuperscript{th} and 5\textsuperscript{th} graders
-			\item 1 session Summer 2017 + 2 sessions Summer 2018
-		\end{itemize}
-	\end{itemize}
-\end{frame}
-
-\begin{frame}
-\frametitle{Teaching with CMU's Gelfand Outreach Center}
-\begin{tikzpicture}[overlay, remember picture]
-\node[anchor=south east] (gelfand-logo) at ($(current page.south east) + (-8mm, 8mm)$) {\includegraphics[width=4cm]{media/gelfand-logo.jpg}};
-\end{tikzpicture}
-\vspace{9em}
-\begin{itemize}
-\item Saturday Series LEGO WeDo Robotics
-\begin{itemize}
-	\item 3 hour course
-	\item 2\textsuperscript{nd} and 3\textsuperscript{rd} graders
-	\item 1 session Spring 2018
-\end{itemize}
-\end{itemize}
-\end{frame}
-
-\begin{frame}
-\frametitle{Robotics Institute Meme Facebook Page}
-\begin{tikzpicture}[overlay, remember picture]
-\node[anchor=center] (ri-meme-screenshot) at (current page.center) {\includegraphics[width=\textwidth]{media/ri-memes.jpg}};
-\end{tikzpicture}
-\end{frame}
-
-\begin{frame}
-\frametitle{Robotics Institute Meme Facebook Page}
-\vspace{9em}
-\begin{itemize}
-\item Some statistics:
-\begin{itemize}
-\item The RI's first and only meme page
-\item Formed in March 2018
-\item 170 members
-\item 30 memes, 23 original contributions!
-\end{itemize}
-\end{itemize}
-\begin{tikzpicture}[overlay, remember picture]
-\node[anchor=south east] (ri-meme-3) at ($(current page.south east) + (2mm,5mm)$) {\includegraphics[width=7.5cm]{media/ri-meme-manifold-optimization.jpg}};
-\end{tikzpicture}
-\begin{tikzpicture}[overlay, remember picture]
-\node[anchor=north east] (ri-meme-1) at ($(current page.north east) + (-45mm,-12mm)$) {\includegraphics[width=3.5cm]{media/ri-meme-thesis-anxiety.jpg}};
-\end{tikzpicture}
-\begin{tikzpicture}[overlay, remember picture]
-\node[anchor=north west] (ri-meme-2) at ($(current page.north west) + (10mm,-12mm)$) {\includegraphics[width=5cm]{media/ri-meme-ros-sleep.jpg}};
-\end{tikzpicture}
-\end{frame}
-
 
 	\backupend
 
